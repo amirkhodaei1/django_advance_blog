@@ -18,7 +18,8 @@ RUN pip install --upgrade pip
 COPY requirements.txt  /app/
  
 # run this command to install all dependencies 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -upgrade pip -i https://mirror-pypi.runflare.com/simple \ 
+&& pip install --no-cache-dir -r requirements.txt
  
 # Copy the Django project to the container
 COPY . core /app/
