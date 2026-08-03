@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager,
     AbstractBaseUser,
-    PermissionManager,
+    PermissionsMixin,
 )
 from django.utils.translation import gettext_lazy as _
 
@@ -31,7 +31,7 @@ class UserManager(BaseUserManager):
             raise ValueError(_("Superuser must have is_superuser=True."))
         return self.create_user(email,password,**extra_fields)
 
-class User(AbstractBaseUser, PermissionManager):
+class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
