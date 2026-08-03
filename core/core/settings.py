@@ -119,4 +119,4 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-Aurh
+AUTH_USER_MODEL = 'accounts.User'
