@@ -18,9 +18,38 @@ class CustomUserAdmin(UserAdmin):
                 "fields": ("email", "password"),
             },
         ),
-        ("permmissions", {"fields": ("is_staff", "is_active", "is_superuser")}),
+        (
+            "permmissions",
+            {
+                "fields": ("is_staff", "is_active", "is_superuser"),
+            },
+        ),
+        (
+            "group permmissions",
+            {
+                "fields": ("groups", "user_permissions"),
+            },
+        ),
+        (
+            "important date",
+            {
+                "fields": ("last_login"),
+            },
+        ),
     )
-    # add_fieldsets = (None, {
-    #     'classes':('wide',),
-    #     'fields':('email','password1','password2',"is_staff", "is_active", "is_superuser")
-    # })
+    add_fieldsets = (
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": (
+                    "email",
+                    "password1",
+                    "password2",
+                    "is_staff",
+                    "is_active",
+                    "is_superuser",
+                ),
+            },
+        ),
+    )
