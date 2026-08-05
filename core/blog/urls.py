@@ -1,8 +1,9 @@
 from django.urls import path 
-from .views import *
-from django.views.generic import TemplateView
+from . import views
+from django.views.generic.base import RedirectView
+app_name='blog'
 urlpatterns=[
-    path('fbv_index',indexView,name="fbv_index"),
-    path('cbv_index',TemplateView.as_view(template_name='blog/index.html',extra_context={"name":"Hoseein"}))
-
+    # path('fbv_index',views.indexView,name="fbv_index"),
+    path('cbv_index',views.IndexView.as_view(),name='cbv_index'),
+    path('go_to_maktabkhooneh/<int:pk>/',views.RedirectToMaktab.as_view(),name="go_to_maktabkhooneh")
 ]
