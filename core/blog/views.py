@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import TemplateView, RedirectView
-from django.views.generic import ListView
-
+from django.views.generic import ListView, DetailView, FormView
+from .forms import PostForm
 from .models import Post
 
 # 1. Function-Based View (برای مسیر fbv_index)
@@ -49,13 +49,28 @@ class RedirectToMaktab(RedirectView):
         return super().get_redirect_url(*args, **kwargs)
 
 
-class PostList(ListView):
+class PostListView(ListView):
     # model=Post
-    queryset=Post.objects.all()
+    queryset = Post.objects.all()
     context_object_name = "posts"
-    paginate_by=2
-    ordering='id'
+    paginate_by = 2
+    ordering = "id"
     # template_name = "blog/post_list.html"  # افزودن این خط
     # def get_queryset(self):
     #     posts = Post.objects.filter(status=True)
     #     return posts
+
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = "blog/post_detail.html"
+
+
+class PostCreateView(FormView):
+    template_name = "contact.html"
+    form_class = PostForm
+    success_url = "/blog/post" 
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+    
