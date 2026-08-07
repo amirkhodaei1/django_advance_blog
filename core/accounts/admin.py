@@ -33,7 +33,7 @@ class CustomUserAdmin(UserAdmin):
         (
             "important date",
             {
-                "fields": ("last_login",    ),
+                "fields": ("last_login",),
             },
         ),
     )

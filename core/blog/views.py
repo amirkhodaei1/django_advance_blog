@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import TemplateView, RedirectView
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import ListView, DetailView, FormView, CreateView,UpdateView,DeleteView
 from .forms import PostForm
 from .models import Post
+from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 
 # 1. Function-Based View (برای مسیر fbv_index)
 """
@@ -49,28 +50,69 @@ class RedirectToMaktab(RedirectView):
         return super().get_redirect_url(*args, **kwargs)
 
 
-class PostListView(ListView):
+class PostListView(PermissionRequiredMixin,LoginRequiredMixin,ListView):
+    permission_required = "blog.view_post"
+
     # model=Post
     queryset = Post.objects.all()
     context_object_name = "posts"
     paginate_by = 2
-    ordering = "id"
+    ordering = "-id"
     # template_name = "blog/post_list.html"  # افزودن این خط
     # def get_queryset(self):
     #     posts = Post.objects.filter(status=True)
     #     return posts
 
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin,DetailView):
     model = Post
     template_name = "blog/post_detail.html"
 
 
-class PostCreateView(FormView):
-    template_name = "contact.html"
+# class PostFormView(FormView):
+#     template_name = "contact.html"
+#     form_class = PostForm
+#     success_url = "/blog/post"
+#     def form_valid(self, form):
+#         form.save()
+#         return super().form_valid(form)
+class PostCreateView(LoginRequiredMixin,CreateView):
+    model=Post
     form_class = PostForm
-    success_url = "/blog/post" 
+    success_url = "/blog/post"
+    # fields = ["author", "title", "content", "status", "category", "published_date"]
+    template_name='contact.html'
     def form_valid(self, form):
-        form.save()
+        form.instance.author=self.request.user
         return super().form_valid(form)
-    
+
+
+class PostEditView(LoginRequiredMixin,UpdateView):
+
+    model=Post
+
+    form_class = PostForm
+
+    success_url = "/blog/post"
+
+    # fields = ["author", "title", "content", "status", "category", "published_date"]
+
+    template_name='contact.html'
+
+    def form_valid(self, form):
+
+        form.instance.author=self.request.user
+
+        return super().form_valid(form)
+
+
+
+class PostDeleteView(LoginRequiredMixin,DeleteView):
+
+    model=Post
+    success_url = "/blog/post"
+
+    # fields = ["author", "title", "content", "status", "category", "published_date"]
+
+    # template_name='contact.html'
+
