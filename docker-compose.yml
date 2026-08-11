@@ -10,6 +10,3 @@ services:
     environment:
       SECRET_KEY: test
       DEBUG: "True"
-
-  redis:
-    image: redis:alpine

@@ -1,9 +1,16 @@
+from django.http import HttpResponse
+
+from accounts.models import Profile
+
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic import ListView, DetailView, FormView, CreateView,UpdateView,DeleteView
 from .forms import PostForm
 from .models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 
 # 1. Function-Based View (برای مسیر fbv_index)
 """
@@ -54,7 +61,7 @@ class PostListView(PermissionRequiredMixin,LoginRequiredMixin,ListView):
     permission_required = "blog.view_post"
 
     # model=Post
-    queryset = Post.objects.all()
+    queryset = Post.objects.filter(status=True)
     context_object_name = "posts"
     paginate_by = 2
     ordering = "-id"
@@ -101,8 +108,8 @@ class PostEditView(LoginRequiredMixin,UpdateView):
 
     def form_valid(self, form):
 
-        form.instance.author=self.request.user
-
+        profile, _ = Profile.objects.get_or_create(user=self.request.user)
+        form.instance.author = profile
         return super().form_valid(form)
 
 
@@ -115,4 +122,6 @@ class PostDeleteView(LoginRequiredMixin,DeleteView):
     # fields = ["author", "title", "content", "status", "category", "published_date"]
 
     # template_name='contact.html'
-
+@api_view()
+def api_post_list_view(request):
+    return Response({'name':'seyedAmirhoseein'})
