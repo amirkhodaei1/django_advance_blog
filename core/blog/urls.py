@@ -11,6 +11,6 @@ urlpatterns=[
     path('post/<int:pk>/delete',views.PostDeleteView.as_view(),name="post-delete"),
     # path('go_to_maktabkhooneh/<int:pk>/',views.RedirectToMaktab.as_view(),name="go_to_maktabkhooneh")
     # path('post/',views.api_post_list_view,name="post-list"),
-    path('api/v1/',include('blog.api.v1.urls')),
+    path('api/v1/',include('blog.api.v1.urls','api-v1'),name='api-v1'),
     
 ]

@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     "blog",
     "accounts",
     "rest_framework",
+    "django_filters",
+    "drf_spectacular",
+
 ]
 
 MIDDLEWARE = [
@@ -137,3 +140,7 @@ AUTH_USER_MODEL = "accounts.User"
 #         'rest_framework.permissions.IsAuthenticated',
 #     ]
 # }
+REST_FRAMEWORK = {
+    ...: ...,
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
