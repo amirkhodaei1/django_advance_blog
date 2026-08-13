@@ -44,8 +44,7 @@ INSTALLED_APPS = [
     "accounts",
     "rest_framework",
     "django_filters",
-    "drf_spectacular",
-
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -133,7 +132,7 @@ STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
 AUTH_USER_MODEL = "accounts.User"
 
 
-#Rest-Framework settings
+# Rest-Framework settings
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': [
