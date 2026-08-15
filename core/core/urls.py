@@ -45,7 +45,7 @@ API_TITLE = "API title"
 API_DESCRIPTION = "..."
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/", include("accounts.urls")),
     path("blog/", include("blog.urls")),
     path("api-auth/", include("rest_framework.urls")),
     path("api-docs/", include_docs_urls("rest_framework.urls")),

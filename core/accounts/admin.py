@@ -7,7 +7,7 @@ from .models import User,Profile
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
     model = User
-    list_display = ("email", "is_superuser", "is_active")
+    list_display = ("email", "is_superuser", "is_active","is_verified")
     list_filter = ("email", "is_superuser", "is_active")
     search_fields = ("email",)
     ordering = ("email",)
@@ -21,7 +21,7 @@ class CustomUserAdmin(UserAdmin):
         (
             "permmissions",
             {
-                "fields": ("is_staff", "is_active", "is_superuser"),
+                "fields": ("is_staff", "is_active", "is_superuser","is_verified"),
             },
         ),
         (
@@ -49,6 +49,7 @@ class CustomUserAdmin(UserAdmin):
                     "is_staff",
                     "is_active",
                     "is_superuser",
+                    "is_verified"
                 ),
             },
         ),
