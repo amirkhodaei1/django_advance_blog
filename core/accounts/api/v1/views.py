@@ -180,7 +180,7 @@ class ActivationResendApiView(generics.GenericAPIView):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         user_obj = serializer.validated_data["user"]
-        token = self.get_token_for_user(user_object)
+        token = self.get_token_for_user(user_obj)
         email_obj = EmailMessage(
             "email/activation_email.tpl",
             {"token": token},

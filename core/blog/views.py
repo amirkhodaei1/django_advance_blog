@@ -39,7 +39,7 @@ class IndexView(TemplateView):
 
 # 3. function-Based View (برای ریدایرکت)
 
-""" 
+"""
 def redirect_to_maktab_view(request, pk):
     # بررسی وجود پست (در صورت عدم وجود، خطای 404 می‌دهد)
     post = get_object_or_404(Post, pk=pk)
