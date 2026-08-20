@@ -1,10 +1,13 @@
-from rest_framework.decorators import api_view, permission_classes,action
+from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.response import Response
-from .serializers import PostSerializer,CategorySerializer
-from ...models import Post,Category
+from .serializers import PostSerializer, CategorySerializer
+from ...models import Post, Category
 from rest_framework import status
 from django.shortcuts import get_object_or_404
-from rest_framework.permissions import IsAuthenticatedOrReadOnly,IsAuthenticated
+from rest_framework.permissions import (
+    IsAuthenticatedOrReadOnly,
+    IsAuthenticated,
+)
 from rest_framework.views import APIView
 from rest_framework.generics import (
     GenericAPIView,
@@ -16,8 +19,9 @@ from rest_framework.generics import (
 from rest_framework import viewsets
 from .permissions import isOwnerOrReadOnly
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter,OrderingFilter
+from rest_framework.filters import SearchFilter, OrderingFilter
 from .paginations import DefaultPagination
+
 # @api_view(["GET", "POST"])
 # @permission_classes([IsAuthenticatedOrReadOnly])
 # def postList(request)
@@ -89,56 +93,62 @@ class PostList(
 #         {"detail": "post does not exist"}, status=status.HTTP_404_NOT_FOUND
 #     )
 # class PostDetail(
-    # GenericAPIView,
-    # mixins.RetrieveModelMixin,
-    # mixins.UpdateModelMixin,
-    # mixins.DestroyModelMixin,
-    # RetrieveUpdateDestroyAPIView
+# GenericAPIView,
+# mixins.RetrieveModelMixin,
+# mixins.UpdateModelMixin,
+# mixins.DestroyModelMixin,
+# RetrieveUpdateDestroyAPIView
 # ):
-    # permission_classes = [IsAuthenticatedOrReadOnly]
-    # serializer_class = PostSerializer
-    # queryset = Post.objects.filter(status=True)
-    # def get(self, request, *args, **kwargs):
-    #     return self.retrieve(request, *args, **kwargs)
+# permission_classes = [IsAuthenticatedOrReadOnly]
+# serializer_class = PostSerializer
+# queryset = Post.objects.filter(status=True)
+# def get(self, request, *args, **kwargs):
+#     return self.retrieve(request, *args, **kwargs)
 
-    # def put(self, request, *args, **kwargs):
-    #     return self.update(request, *args, **kwargs)
+# def put(self, request, *args, **kwargs):
+#     return self.update(request, *args, **kwargs)
 
-    # def delete(self, request, *args, **kwargs):
-    #     return self.destroy(request, *args, **kwargs)
+# def delete(self, request, *args, **kwargs):
+#     return self.destroy(request, *args, **kwargs)
 
-    # def get(self, requset, id):
-    #     post = get_object_or_404(Post, pk=id, status=True)
-    #     serializer = self.serializer_class(post)
-    #     return Response(serializer.data)
+# def get(self, requset, id):
+#     post = get_object_or_404(Post, pk=id, status=True)
+#     serializer = self.serializer_class(post)
+#     return Response(serializer.data)
 
-    # def put(self, requset, id):
-    #     post = get_object_or_404(Post, pk=id, status=True)
-    #     serializer = self.serializer_class(post, data=self.requset.data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #     return Response(serializer.data)
+# def put(self, requset, id):
+#     post = get_object_or_404(Post, pk=id, status=True)
+#     serializer = self.serializer_class(post, data=self.requset.data)
+#     serializer.is_valid(raise_exception=True)
+#     serializer.save()
+#     return Response(serializer.data)
 
-    # def delete(self, request, id):
-    #     post = get_object_or_404(Post, pk=id, status=True)
-    #     post.delete()
-    #     return Response(
-    #         {"message": "Post deleted successfully"}, status=status.HTTP_200_OK
-    #     )
+# def delete(self, request, id):
+#     post = get_object_or_404(Post, pk=id, status=True)
+#     post.delete()
+#     return Response(
+#         {"message": "Post deleted successfully"}, status=status.HTTP_200_OK
+#     )
 
 
 class PostModelViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticatedOrReadOnly,isOwnerOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly, isOwnerOrReadOnly]
     serializer_class = PostSerializer
     queryset = Post.objects.filter(status=True)
-    @action(methods=['get'],detail=False)
-    def get_ok(self,request):
-        return Response({'detail':'ok'})
-    filter_backends=[DjangoFilterBackend,SearchFilter,OrderingFilter]
-    filterset_fields={'category':["exact","in"],'author':["exact"],'status':["exact"]}
-    search_fields = ['title', 'content']
-    ordering_fields=['published_date']
-    pagination_class=DefaultPagination
+
+    @action(methods=["get"], detail=False)
+    def get_ok(self, request):
+        return Response({"detail": "ok"})
+
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = {
+        "category": ["exact", "in"],
+        "author": ["exact"],
+        "status": ["exact"],
+    }
+    search_fields = ["title", "content"]
+    ordering_fields = ["published_date"]
+    pagination_class = DefaultPagination
 
     # def list(self, request):
     #     serializer = self.serializer_class(self.queryset, many=True)
@@ -161,8 +171,8 @@ class PostModelViewSet(viewsets.ModelViewSet):
     # def destroy(self, request, pk=None):
     #     pass
 
-class CategoryModelViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAuthenticatedOrReadOnly]
-    serializer_class=CategorySerializer
-    queryset = Category.objects.all()
 
+class CategoryModelViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()

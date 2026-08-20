@@ -4,13 +4,22 @@ from accounts.models import Profile
 
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import TemplateView, RedirectView
-from django.views.generic import ListView, DetailView, FormView, CreateView,UpdateView,DeleteView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    FormView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
 from .forms import PostForm
 from .models import Post
-from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+    PermissionRequiredMixin,
+)
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
 
 # 1. Function-Based View (برای مسیر fbv_index)
 """
@@ -57,7 +66,7 @@ class RedirectToMaktab(RedirectView):
         return super().get_redirect_url(*args, **kwargs)
 
 
-class PostListView(PermissionRequiredMixin,LoginRequiredMixin,ListView):
+class PostListView(PermissionRequiredMixin, LoginRequiredMixin, ListView):
     permission_required = "blog.view_post"
 
     # model=Post
@@ -71,7 +80,7 @@ class PostListView(PermissionRequiredMixin,LoginRequiredMixin,ListView):
     #     return posts
 
 
-class PostDetailView(LoginRequiredMixin,DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     template_name = "blog/post_detail.html"
 
@@ -83,20 +92,21 @@ class PostDetailView(LoginRequiredMixin,DetailView):
 #     def form_valid(self, form):
 #         form.save()
 #         return super().form_valid(form)
-class PostCreateView(LoginRequiredMixin,CreateView):
-    model=Post
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
     form_class = PostForm
     success_url = "/blog/post"
     # fields = ["author", "title", "content", "status", "category", "published_date"]
-    template_name='contact.html'
+    template_name = "contact.html"
+
     def form_valid(self, form):
-        form.instance.author=self.request.user
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
 
-class PostEditView(LoginRequiredMixin,UpdateView):
+class PostEditView(LoginRequiredMixin, UpdateView):
 
-    model=Post
+    model = Post
 
     form_class = PostForm
 
@@ -104,7 +114,7 @@ class PostEditView(LoginRequiredMixin,UpdateView):
 
     # fields = ["author", "title", "content", "status", "category", "published_date"]
 
-    template_name='contact.html'
+    template_name = "contact.html"
 
     def form_valid(self, form):
 
@@ -113,15 +123,16 @@ class PostEditView(LoginRequiredMixin,UpdateView):
         return super().form_valid(form)
 
 
+class PostDeleteView(LoginRequiredMixin, DeleteView):
 
-class PostDeleteView(LoginRequiredMixin,DeleteView):
-
-    model=Post
+    model = Post
     success_url = "/blog/post"
 
     # fields = ["author", "title", "content", "status", "category", "published_date"]
 
     # template_name='contact.html'
+
+
 @api_view()
 def api_post_list_view(request):
-    return Response({'name':'seyedAmirhoseein'})
+    return Response({"name": "seyedAmirhoseein"})

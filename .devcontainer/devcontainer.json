@@ -1,19 +1,25 @@
 {
-  "name": "Django Advanced Blog",
-  "dockerComposeFile": "../docker-compose.yml",
-  "service": "backend",
-  "workspaceFolder": "/app",
-  "shutdownAction": "stopCompose",
-  "customizations": {
-    "vscode": {
-      "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python"
-      },
-      "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "batisteo.vscode-django"
-      ]
+    "name": "Django Advanced Blog",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "backend",
+    "workspaceFolder": "/app",
+    "shutdownAction": "stopCompose",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "editor.formatOnSave": true,
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter"
+                }
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "batisteo.vscode-django",
+                "ms-python.black-formatter",
+                "ms-python.flake8"
+            ]
+        }
     }
-  }
-} 
+}

@@ -158,7 +158,8 @@ class ActivationApiView(APIView):
             )
         except InvalidSignatureError:
             return Response(
-                {"details": "token in not valid"}, status=status.HTTP_400_BAD_REQUEST
+                {"details": "token in not valid"},
+                status=status.HTTP_400_BAD_REQUEST,
             )
         user_obj = User.objects.get(pk=user_id)
 
@@ -190,7 +191,6 @@ class ActivationResendApiView(generics.GenericAPIView):
             {"details": "user activation resend successfully"},
             status=status.HTTP_200_OK,
         )
-
 
     def get_token_for_user(self, user):
         refresh = RefreshToken.for_user(user)

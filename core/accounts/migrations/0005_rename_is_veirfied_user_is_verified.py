@@ -6,13 +6,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0004_user_is_veirfied'),
+        ("accounts", "0004_user_is_veirfied"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='user',
-            old_name='is_veirfied',
-            new_name='is_verified',
+            model_name="user",
+            old_name="is_veirfied",
+            new_name="is_verified",
         ),
     ]

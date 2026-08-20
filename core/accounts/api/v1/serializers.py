@@ -119,5 +119,5 @@ class ActivationResendSerializer(serializers.Serializer):
             raise serializers.ValidationError({"detail": "user dose not exist"})
         # if user_obj.is_verified:
         #     raise serializers.ValidationError({"detail": "user is already activated"})
-        attrs['user']=user_obj
+        attrs["user"] = user_obj
         return super().validate(attrs)
