@@ -1,10 +1,11 @@
-from rest_framework import serializers
-from ...models import Profile, User
+from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.password_validation import validate_password
 from django.core import exceptions
-from django.contrib.auth import authenticate, get_user_model
 from django.utils.translation import gettext_lazy as _
+from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+from ...models import Profile, User
 
 User = get_user_model()
 

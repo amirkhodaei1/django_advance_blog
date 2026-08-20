@@ -1,25 +1,22 @@
-from django.http import HttpResponse
-
 from accounts.models import Profile
-
-from django.shortcuts import render, get_object_or_404
-from django.views.generic.base import TemplateView, RedirectView
-from django.views.generic import (
-    ListView,
-    DetailView,
-    FormView,
-    CreateView,
-    UpdateView,
-    DeleteView,
-)
-from .forms import PostForm
-from .models import Post
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     PermissionRequiredMixin,
 )
+from django.shortcuts import get_object_or_404
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+)
+from django.views.generic.base import RedirectView, TemplateView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+from .forms import PostForm
+from .models import Post
 
 # 1. Function-Based View (برای مسیر fbv_index)
 """
@@ -105,7 +102,6 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 
 class PostEditView(LoginRequiredMixin, UpdateView):
-
     model = Post
 
     form_class = PostForm
@@ -124,7 +120,6 @@ class PostEditView(LoginRequiredMixin, UpdateView):
 
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
-
     model = Post
     success_url = "/blog/post"
 
