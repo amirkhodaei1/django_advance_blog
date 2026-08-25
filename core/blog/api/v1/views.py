@@ -5,9 +5,7 @@ from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.generics import (
     ListCreateAPIView,
 )
-from rest_framework.permissions import (
-    IsAuthenticatedOrReadOnly,
-)
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from rest_framework.response import Response
 
 from ...models import Category, Post
@@ -166,6 +164,6 @@ class PostModelViewSet(viewsets.ModelViewSet):
 
 
 class CategoryModelViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticated]
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
