@@ -19,4 +19,5 @@ urlpatterns = [
     # path('go_to_maktabkhooneh/<int:pk>/',views.RedirectToMaktab.as_view(),name="go_to_maktabkhooneh")
     # path('post/',views.api_post_list_view,name="post-list"),
     path("api/v1/", include("blog.api.v1.urls", namespace="api-v1")),
+    path("test_weather/", views.test_weather, name="test-weather"),
 ]

@@ -1,3 +1,6 @@
+from django.http import HttpResponse, JsonResponse
+import requests
+from django.views.decorators.cache import cache_page
 from accounts.models import Profile
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
@@ -134,3 +137,19 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
 @api_view()
 def api_post_list_view(request):
     return Response({"name": "seyedAmirhoseein"})
+
+
+def send_email(request):
+    send_email.delay()
+    return HttpResponse("<h1>Done Sending</h1>")
+
+
+@cache_page(60)
+def test_weather(request):
+    response = requests.get(
+        "https://api.api-ninjas.com/v1/bitcoin",
+        headers={
+            "X-Api-Key": "E6bdYbjMteojrAmk6o41s1jxbRcMua4DFEBxCF9Z",
+        },
+    )
+    return JsonResponse(response.json())
