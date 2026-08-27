@@ -1,146 +1,226 @@
-django_advance_blog
+Django Advance Blog
 
-Advanced Django Blog Platform with REST APIs, Authentication, Background Tasks, Caching, Testing, Load Testing, Docker, and CI
+A Full-Stack Django Backend Engineering Playground
 
-""Python" (https://img.shields.io/badge/Python-3.12+-3776AB?logo=python&logoColor=white)" (https://www.python.org/)
-""Django" (https://img.shields.io/badge/Django-6.0.7-092E20?logo=django&logoColor=white)" (https://www.djangoproject.com/)
-""Django REST Framework" (https://img.shields.io/badge/DRF-3.15.2-A30000?logo=django&logoColor=white)" (https://www.django-rest-framework.org/)
-""Redis" (https://img.shields.io/badge/Redis-8.x-DC382D?logo=redis&logoColor=white)" (https://redis.io/)
-""Celery" (https://img.shields.io/badge/Celery-5.6.3-37814A?logo=celery&logoColor=white)" (https://docs.celeryq.dev/)
-""Docker" (https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)" (https://www.docker.com/)
-""Pytest" (https://img.shields.io/badge/Pytest-9.x-0A9EDC?logo=pytest&logoColor=white)" (https://pytest.org/)
-""License" (https://img.shields.io/badge/License-MIT-blue.svg)" (LICENSE)
+<p align="center">
+  <strong>From Django fundamentals to APIs, authentication, caching, background jobs, testing, load testing, and containerized deployment.</strong>
+</p><p align="center">
+  <a href="https://github.com/amirkhodaei1/django_advance_blog">
+    <img src="https://img.shields.io/badge/GitHub-Repository-181717?logo=github" alt="GitHub">
+  </a>
+  <img src="https://img.shields.io/badge/Django-6.0.7-092E20?logo=django&logoColor=white" alt="Django">
+  <img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/DRF-3.15.2-A30000" alt="Django REST Framework">
+  <img src="https://img.shields.io/badge/Redis-Cache%20%2B%20Broker-DC382D?logo=redis&logoColor=white" alt="Redis">
+  <img src="https://img.shields.io/badge/Celery-5.6.3-37814A?logo=celery&logoColor=white" alt="Celery">
+  <img src="https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/Gunicorn-Production-499848" alt="Gunicorn">
+  <img src="https://img.shields.io/badge/Nginx-Reverse%20Proxy-009639?logo=nginx&logoColor=white" alt="Nginx">
+</p>---
 
-«A serious Django learning and engineering project that combines a traditional blog application with REST APIs, multiple authentication mechanisms, asynchronous processing, caching, automated testing, load testing, containerization, and CI.»
+✦ About
+
+Django Advance Blog is not just a blog application.
+
+It is an evolving backend engineering project built to explore how a Django application grows from a conventional web application into a more complete, API-driven, asynchronous, tested, cached, containerized, and deployable system.
+
+The repository brings together multiple layers of backend engineering:
+
+Django
+  ↓
+Application Architecture
+  ↓
+REST APIs
+  ↓
+Authentication
+  ↓
+API Documentation
+  ↓
+Redis Caching
+  ↓
+Celery Background Processing
+  ↓
+Periodic Tasks
+  ↓
+Automated Testing
+  ↓
+Load Testing
+  ↓
+Docker
+  ↓
+Gunicorn + Nginx
+  ↓
+Continuous Integration
+
+The current codebase contains dedicated "accounts", "blog", and "locust" components, a "core" Django project, versioned blog APIs, Swagger/Redoc documentation routes, Docker deployment files, and a GitHub Actions CI workflow.
 
 ---
 
-📌 Project Overview
+✨ Highlights
 
-"django_advance_blog" is an advanced Django project built around a blog application and designed to explore the transition from a conventional Django website into a more complete backend platform.
+<table>
+<tr>
+<td width="50%">🧱 Django Core
 
-The repository brings together multiple areas of modern Django development:
-
-- Django application development
-- Blog/domain modeling
-- Custom user management
+- Modular Django applications
+- Custom user model
 - Class-Based Views
+- Templates
+- Forms
+- Admin
+- URL namespacing
+
+</td>
+<td width="50%">🌐 API Platform
+
 - Django REST Framework
-- API authentication
+- Versioned API structure
 - JWT authentication
-- API documentation
+- Token authentication
+- Session authentication
+- Filtering
+- Djoser
+
+</td>
+</tr><tr>
+<td>⚡ Distributed Features
+
 - Redis caching
-- Celery background processing
-- Celery Beat scheduling
-- Automated testing
+- Celery
+- Celery Beat
+- Redis-backed task infrastructure
+
+</td>
+<td>🧪 Quality & Performance
+
 - Pytest
+- pytest-django
 - Flake8
-- Load testing with Locust
-- Docker and Docker Compose
+- Black
+- Locust
+- CI with GitHub Actions
+
+</td>
+</tr><tr>
+<td>🐳 Deployment
+
+- Docker
+- Docker Compose
 - Gunicorn
 - Nginx
-- GitHub Actions
+- Static volumes
+- Media volumes
 
-The current repository contains dedicated "accounts", "blog", "locust", and "core" components, together with Docker, deployment, and CI configuration.
+</td>
+<td>📚 Developer Experience
+
+- Swagger
+- ReDoc
+- DRF API docs
+- Management commands
+- Containerized development
+
+</td>
+</tr>
+</table>The dependency manifest confirms the project integrates Django REST Framework, Simple JWT, Djoser, Django Filters, Redis, django-redis, Celery, Django Celery Beat, Pytest, Flake8, Black, Locust-related infrastructure, Gunicorn, and API documentation tooling.
 
 ---
 
-🎯 What This Project Demonstrates
+🧭 Project Vision
 
-This project is intentionally broader than a simple CRUD blog.
+The project is designed around a simple engineering idea:
 
-It demonstrates how different backend concerns can coexist in one Django system:
+«Build a Django application the way a real backend system grows in the real world.»
 
-                         ┌──────────────────────┐
-                         │      Web Client      │
-                         └──────────┬───────────┘
-                                    │
-                                    ▼
-                         ┌──────────────────────┐
-                         │        Nginx         │
-                         │ Reverse Proxy / HTTP │
-                         └──────────┬───────────┘
-                                    │
-                                    ▼
-                         ┌──────────────────────┐
-                         │      Gunicorn        │
-                         │    WSGI Server       │
-                         └──────────┬───────────┘
-                                    │
-                                    ▼
-                         ┌──────────────────────┐
-                         │       Django         │
-                         │  Web + REST APIs     │
-                         └───────┬───────┬──────┘
-                                 │       │
-                    ┌────────────┘       └────────────┐
-                    ▼                                 ▼
-             ┌─────────────┐                    ┌─────────────┐
-             │    Redis    │                    │  Database   │
-             │ Cache/Queue │                    │   SQLite*   │
-             └──────┬──────┘                    └─────────────┘
+Instead of stopping at:
+
+Model → View → Template
+
+the project explores:
+
+                       ┌────────────────────┐
+                       │       Client       │
+                       └─────────┬──────────┘
+                                 │
+                                 ▼
+                       ┌────────────────────┐
+                       │       Nginx        │
+                       │ Reverse Proxy      │
+                       └─────────┬──────────┘
+                                 │
+                                 ▼
+                       ┌────────────────────┐
+                       │     Gunicorn       │
+                       │      WSGI          │
+                       └─────────┬──────────┘
+                                 │
+                                 ▼
+                       ┌────────────────────┐
+                       │      Django        │
+                       │ Web + REST APIs    │
+                       └──────┬──────┬──────┘
+                              │      │
+                    ┌─────────┘      └─────────┐
+                    ▼                          ▼
+             ┌──────────────┐           ┌──────────────┐
+             │    Redis     │           │   Database   │
+             │ Cache/Broker │           │    SQLite    │
+             └──────┬───────┘           └──────────────┘
                     │
-              ┌─────┴──────┐
-              ▼            ▼
-        ┌──────────┐  ┌──────────────┐
-        │  Celery  │  │ Celery Beat  │
-        │  Worker  │  │  Scheduler   │
-        └──────────┘  └──────────────┘
+               ┌────┴────┐
+               ▼         ▼
+          ┌─────────┐ ┌─────────────┐
+          │ Celery  │ │ Celery Beat │
+          │ Worker  │ │  Scheduler  │
+          └─────────┘ └─────────────┘
 
-* The current settings use SQLite as the default database.
-
-The repository's current settings configure SQLite, Redis caching, Redis as the Celery broker, and Django apps including "blog", "accounts", DRF, Djoser, JWT support, CORS headers, and "django-celery-beat".
+The current settings use SQLite for the database, Redis database "2" for Django caching, and Redis database "1" as the Celery broker.
 
 ---
 
-🧰 Technology Stack
+🏗️ Architecture
 
-Technology| Purpose
-Python 3.12+| Backend language/runtime
-Django 6.0.7| Web framework
-Django REST Framework| REST API development
-Djoser| Authentication endpoints
-Simple JWT| JWT authentication
-Token Authentication| API token authentication
-Django Filters| API filtering
-DRF YASG| Swagger/OpenAPI documentation
-Redis| Cache + Celery broker
-django-redis| Django Redis cache backend
-Celery| Background task processing
-django-celery-beat| Periodic task scheduling
-Pytest| Testing
-pytest-django| Django test integration
-Flake8| Static analysis
-Black| Code formatting
-Locust| Load testing
-Gunicorn| WSGI application server
-Nginx| Reverse proxy + static/media serving
-Docker| Containerization
-Docker Compose| Local/staging orchestration
-GitHub Actions| CI
+Application Layer
 
-These dependencies are pinned in "requirements.txt".
+core/
+│
+├── core/          → Django project configuration
+│
+├── accounts/      → User/account domain
+│
+├── blog/          → Blog domain
+│
+└── locust/        → Load-testing resources
+
+The repository contains "core/manage.py", the inner "core" project package, "accounts", "blog", "locust", and a static directory.
 
 ---
 
-📂 Repository Structure
-
-The repository currently follows this general structure:
+📦 Repository Structure
 
 django_advance_blog/
-│
-├── .devcontainer/
 │
 ├── .github/
 │   └── workflows/
 │       └── docker-image.yml
 │
-├── .vscode/
-│
 ├── core/
 │   ├── accounts/
+│   │   ├── ...
+│   │   └── ...
+│   │
 │   ├── blog/
+│   │   ├── api/
+│   │   │   └── v1/
+│   │   ├── ...
+│   │   └── urls.py
+│   │
 │   ├── core/
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   ├── wsgi.py
+│   │   └── asgi.py
+│   │
 │   ├── locust/
 │   ├── static/
 │   ├── manage.py
@@ -150,163 +230,187 @@ django_advance_blog/
 ├── templates/
 │
 ├── Dockerfile
-├── default.conf
 ├── docker-compose.yml
 ├── docker-compose-stage.yml
 ├── docker-compose-prod.yml
+├── default.conf
 ├── requirements.txt
 ├── LICENSE
 └── README.md
 
-The repository currently contains separate "accounts", "blog", "core", "locust", and static components, as well as development, staging, and production Compose files.
-
 ---
 
-🧠 Application Architecture
+📝 Core Django Project
 
-"accounts"
+The inner "core" package contains the Django project's configuration.
 
-The project contains a dedicated "accounts" application for user-related functionality.
+The project configures:
 
-The Django settings also configure:
-
-AUTH_USER_MODEL = "accounts.User"
-
-which means the project uses a custom user model rather than relying solely on Django's default user model.
-
----
-
-"blog"
-
-The "blog" application contains the blog domain and its associated application logic.
-
-It serves as the primary business domain through which the project demonstrates:
-
-- Django models
-- forms
-- views
-- class-based views
-- REST APIs
-- serializers
-- authentication-aware endpoints
-- testing
-
----
-
-"core"
-
-The inner "core" package contains the Django project configuration:
-
-core/
-├── settings.py
-├── urls.py
-├── wsgi.py
-└── asgi.py
-
-The current WSGI application is configured as:
-
+ROOT_URLCONF = "core.urls"
 WSGI_APPLICATION = "core.wsgi.application"
 
-and Gunicorn is configured to run:
+The production-oriented Compose configuration starts Gunicorn with:
 
 gunicorn core.wsgi --bind 0.0.0.0:8000
 
 ---
 
-🔐 Authentication
+👤 Accounts
 
-The project integrates several Django REST authentication mechanisms.
+The application defines a dedicated "accounts" application.
 
-Current REST framework configuration includes:
+The project explicitly uses:
 
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.TokenAuthentication",
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ],
-}
+AUTH_USER_MODEL = "accounts.User"
 
-This gives the project a useful foundation for experimenting with:
-
-- Session authentication
-- Basic authentication
-- DRF token authentication
-- JWT authentication
+This means user management is built around a custom user model.
 
 ---
 
-🔑 JWT Authentication
+📰 Blog
+
+The "blog" application is the primary business domain.
+
+It combines classic Django views with API-oriented functionality.
+
+The current URL configuration includes routes for:
+
+/blog/
+/blog/post/
+/blog/post/api
+/blog/post/<id>/
+/blog/post/create/
+/blog/post/<id>/edit
+/blog/post/<id>/delete
+/blog/api/v1/
+/blog/test_weather/
+
+---
+
+🌐 API Architecture
+
+The blog API is explicitly versioned:
+
+/blog/api/v1/
+
+and is included from:
+
+path(
+    "api/v1/",
+    include("blog.api.v1.urls", namespace="api-v1"),
+)
+
+This is an important architectural choice because API versioning provides a path for evolving endpoints without immediately breaking existing clients.
+
+---
+
+🔐 Authentication
+
+The REST framework configuration currently supports:
+
+BasicAuthentication
+SessionAuthentication
+TokenAuthentication
+JWTAuthentication
+
+This gives the API multiple authentication strategies for different client types.
+
+Authentication ecosystem
+
+                       Authentication
+                              │
+             ┌────────────────┼────────────────┐
+             ▼                ▼                ▼
+         Session            Token             JWT
+             │                │                │
+             └────────────────┼────────────────┘
+                              ▼
+                         REST API
+
+The project also includes Djoser and Simple JWT in its dependency stack.
+
+---
+
+🔑 JWT
 
 JWT support is provided through:
 
-djangorestframework_simplejwt
+rest_framework_simplejwt
 
-and is included in the project's REST authentication classes.
+and registered in Django REST Framework's authentication classes.
 
-This allows API clients to use stateless token-based authentication suitable for:
+This makes the project suitable for API consumers such as:
 
-- mobile applications
-- SPA frontends
-- external API consumers
-- service integrations
-
----
-
-👤 Djoser
-
-The project also includes:
-
-djoser
-
-as a dependency and Django application.
-
-Djoser provides infrastructure for authentication-related API endpoints and can reduce the amount of repetitive authentication boilerplate required in an API project.
+Web SPA
+Mobile App
+Desktop Client
+External Service
 
 ---
 
-📡 REST API
+🎛️ Filtering
 
-The project uses:
-
-Django REST Framework
-
-together with:
+The project includes:
 
 django-filter
 
-for API development and filtering capabilities.
-
-The dependency stack also contains both:
-
-drf-yasg
-drf-spectacular
-
-providing OpenAPI/Swagger-related tooling in the project environment.
+which provides infrastructure for building filterable REST endpoints.
 
 ---
 
 📚 API Documentation
 
-API documentation is part of the project's architecture.
+The project exposes multiple API documentation interfaces.
 
-The repository includes Swagger/OpenAPI-related dependencies such as:
+Current routes include:
 
-drf-yasg
-drf-spectacular
+/swagger/
 
-This makes it possible to expose machine-readable and interactive API documentation for the REST layer.
+/swagger/output.json
+
+/redoc/
+
+and DRF documentation:
+
+/api-docs/
+
+The Django URL configuration uses "drf_yasg" to build the Swagger schema and exposes both Swagger UI and ReDoc.
+
+---
+
+🗺️ API Documentation Flow
+
+Django REST API
+       │
+       ▼
+ OpenAPI Schema
+       │
+    ┌──┴───┐
+    ▼      ▼
+ Swagger  ReDoc
 
 ---
 
 ⚡ Redis
 
-Redis is integrated into the project for more than one purpose.
+Redis plays a central role in the architecture.
+
+It is used for:
 
 Cache
+ +
+Celery Broker
 
-The current Django configuration uses:
+The current Django settings configure:
+
+Redis DB 2 → Django Cache
+Redis DB 1 → Celery Broker
+
+---
+
+🧠 Caching
+
+The project uses "django-redis":
 
 CACHES = {
     "default": {
@@ -318,199 +422,258 @@ CACHES = {
     }
 }
 
-Celery Broker
-
-Celery is configured to use Redis as its broker:
-
-CELERY_BROKER_URL = "redis://redis:6379/1"
-
-This separates cache traffic and Celery broker traffic into different Redis databases.
+This provides a foundation for reducing repeated database work and improving response performance.
 
 ---
 
 🔄 Celery
 
-The project includes:
+Celery is integrated into the project for asynchronous processing.
 
-celery
-django-celery-beat
-redis
+Current broker:
 
-providing the foundation for asynchronous background processing.
+redis://redis:6379/1
 
-Conceptually:
+Architecture:
 
 Django
-   │
-   │ enqueue task
-   ▼
- Redis
-   │
-   ▼
+  │
+  │ enqueue task
+  ▼
+Redis
+  │
+  ▼
 Celery Worker
-   │
-   ▼
-Background Task
+  │
+  ▼
+Background Processing
 
-This architecture is suitable for operations that do not need to block an HTTP request.
-
-Examples include:
-
-- email delivery
-- notifications
-- long-running processing
-- scheduled work
-- background data processing
-
-The repository explicitly includes Celery, Redis, and Django Celery Beat dependencies.
+Celery and "django-celery-beat" are included in the project's dependencies.
 
 ---
 
 ⏰ Celery Beat
 
-"django-celery-beat" is included for periodic task scheduling.
+Periodic tasks are supported through:
 
-The conceptual flow is:
+django-celery-beat
+
+Conceptually:
 
 Celery Beat
-     │
-     ▼
-   Redis
-     │
-     ▼
+    │
+    ▼
+ Redis
+    │
+    ▼
 Celery Worker
-     │
-     ▼
-   Task
+    │
+    ▼
+Periodic Task
 
-This allows the application to evolve from request/response processing toward scheduled background workflows.
-
----
-
-🗃️ Database
-
-The current project settings use SQLite:
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
-This is convenient for development and educational use.
-
-For larger production deployments, the database layer can later be moved to a dedicated relational database such as PostgreSQL.
+This architecture allows the application to move beyond request/response processing into scheduled background workflows.
 
 ---
 
-🎨 Static & Media Files
+📧 Email Infrastructure
 
-Django currently defines:
+The current settings configure SMTP through a service named:
+
+smtp4dev
+
+using:
+
+smtp4dev:25
+
+This is useful for local/staging email development without relying on a real mail provider.
+
+---
+
+🌐 CORS
+
+The project currently enables:
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+This is convenient during development and testing, but production deployments should normally restrict allowed origins.
+
+---
+
+🎨 Static Files
+
+The current Django configuration uses:
 
 STATIC_URL = "static/"
-MEDIA_URL = "media/"
-
 STATIC_ROOT = BASE_DIR / "static"
-MEDIA_ROOT = BASE_DIR / "media"
-
 STATICFILES_DIRS = [
     BASE_DIR / "staticfiles"
 ]
 
-The staging Compose configuration shares static and media content between the Django backend and Nginx using Docker named volumes:
+The project also defines media handling through:
 
-volumes:
-  static_volume:
-  media_volume:
-
-The backend mounts:
-
-- static_volume:/app/core/static
-- media_volume:/app/core/media
-
-while Nginx mounts those same named volumes for serving the files.
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 ---
 
-🌐 Nginx
+📦 Static File Architecture
 
-Nginx acts as the HTTP entry point in the containerized deployment.
+                   Django
+                      │
+                      │ collectstatic
+                      ▼
+              /app/core/static
+                      │
+                      ▼
+               static_volume
+                      │
+                      ▼
+                    Nginx
+                      │
+                      ▼
+                  /static/*
 
-The current configuration forwards application traffic to:
+The staging Compose configuration shares "static_volume" and "media_volume" between the backend and Nginx containers.
+
+---
+
+🌍 Nginx
+
+Nginx sits in front of Django and forwards application requests to:
 
 backend:8000
 
-and serves static and media files directly.
+while also serving static and media assets.
 
-Architecture:
+                         Nginx
+                           │
+             ┌─────────────┼─────────────┐
+             ▼             ▼             ▼
+          /static/       /media/          /
+             │             │              │
+             ▼             ▼              ▼
+          Static          Media         Django
+                                        :8000
 
-Client
-  │
-  ▼
-Nginx :80
-  │
-  ├── /static/ → static files
-  │
-  ├── /media/  → media files
-  │
-  └── /        → backend:8000
+The repository's current Nginx configuration uses an upstream named "django" pointing at "backend:8000".
 
 ---
 
-🚀 Gunicorn
+🦄 Gunicorn
 
-The staging deployment uses Gunicorn as the production WSGI server:
+Gunicorn is used as the WSGI application server.
+
+Current staging command:
 
 gunicorn core.wsgi --bind 0.0.0.0:8000
 
-This replaces Django's development server with a dedicated WSGI application server for deployment scenarios.
+This establishes the standard deployment chain:
+
+Client
+  ↓
+Nginx
+  ↓
+Gunicorn
+  ↓
+Django
 
 ---
 
 🐳 Docker
 
-The repository includes a Dockerfile based on:
+The project includes a Dockerfile based on:
 
 FROM python:3.12-slim
 
-The image:
-
-1. creates "/app" as the initial working directory,
-2. upgrades pip,
-3. installs "requirements.txt",
-4. copies the project,
-5. switches to "/app/core",
-6. exposes port "8000".
+The image installs the project's Python dependencies and switches the working directory to the "core" directory where "manage.py" resides.
 
 ---
 
 🧩 Docker Compose
 
-The repository contains multiple Compose configurations:
+The repository includes separate Compose definitions:
 
 docker-compose.yml
 docker-compose-stage.yml
 docker-compose-prod.yml
 
-This gives the project a clear path toward separating development, staging, and production concerns.
+The current staging configuration defines:
+
+redis
+backend
+nginx
+
+with named volumes:
+
+static_volume
+media_volume
+
+---
+
+🚀 Staging Deployment
+
+Start the staging environment:
+
+docker compose -f docker-compose-stage.yml up -d --build
+
+Check status:
+
+docker compose -f docker-compose-stage.yml ps
+
+Follow logs:
+
+docker compose -f docker-compose-stage.yml logs -f
+
+Backend only:
+
+docker compose -f docker-compose-stage.yml logs -f backend
+
+Nginx only:
+
+docker compose -f docker-compose-stage.yml logs -f nginx
+
+---
+
+🛠️ Django Operations
+
+System Check
+
+docker compose exec backend python manage.py check
+
+Migrations
+
+docker compose exec backend python manage.py makemigrations
+
+docker compose exec backend python manage.py migrate
+
+Superuser
+
+docker compose exec backend python manage.py createsuperuser
+
+Static Collection
+
+docker compose exec backend python manage.py collectstatic --noinput
+
+Django Shell
+
+docker compose exec backend python manage.py shell
 
 ---
 
 🧪 Testing
 
-The repository contains:
+Testing is part of the repository's development workflow.
+
+The project includes:
 
 pytest
 pytest-django
 
-and a "pytest.ini" configuration file inside the Django project.
-
-Run tests with:
+Run:
 
 pytest .
 
-Inside Docker:
+or:
 
 docker compose exec backend pytest .
 
@@ -518,351 +681,115 @@ docker compose exec backend pytest .
 
 🧹 Code Quality
 
-The project includes both:
+The project includes:
 
-flake8
-black
-
-for code-quality and formatting workflows.
+Flake8
+Black
 
 Run Flake8:
 
 flake8 .
 
-Inside Docker:
-
-docker compose exec backend flake8 .
-
-Format with Black:
+Run Black:
 
 black .
 
----
-
-📈 Load Testing
-
-The repository includes a dedicated:
-
-core/locust/
-
-component for load testing.
-
-Locust is useful for evaluating application behavior under concurrent traffic and identifying:
-
-- slow endpoints
-- throughput limitations
-- unexpected error rates
-- bottlenecks
-- resource pressure
-
-Run Locust according to the load-testing configuration contained in the "core/locust" directory.
-
----
-
-🤖 Continuous Integration
-
-The repository contains a GitHub Actions workflow:
-
-.github/workflows/docker-image.yml
-
-The current workflow runs on pushes and pull requests targeting "main".
-
-Its pipeline:
-
-GitHub
-   │
-   ▼
-Checkout
-   │
-   ▼
-Start Docker Compose
-   │
-   ├── Flake8
-   │
-   └── Pytest
-
-The current workflow explicitly starts Docker Compose and executes both Flake8 and Pytest inside the backend container.
-
----
-
-🚀 Getting Started
-
-1. Clone the repository
-
-git clone https://github.com/amirkhodaei1/django_advance_blog.git
-
-cd django_advance_blog
-
----
-
-🐳 Run with Docker
-
-Start the default Compose environment:
-
-docker compose up -d --build
-
-Check services:
-
-docker compose ps
-
-View logs:
-
-docker compose logs -f
-
----
-
-🧰 Development Commands
-
-Run Django checks:
-
-docker compose exec backend python manage.py check
-
-Create migrations:
-
-docker compose exec backend python manage.py makemigrations
-
-Apply migrations:
-
-docker compose exec backend python manage.py migrate
-
-Open Django shell:
-
-docker compose exec backend python manage.py shell
-
-Create a superuser:
-
-docker compose exec backend python manage.py createsuperuser
-
-Collect static files:
-
-docker compose exec backend python manage.py collectstatic --noinput
-
----
-
-🧪 Run Tests
-
-docker compose exec backend pytest .
-
-Or locally:
-
-pytest .
-
----
-
-🧹 Run Flake8
+Inside Docker:
 
 docker compose exec backend flake8 .
-
----
-
-🎨 Run Black
 
 docker compose exec backend black .
 
 ---
 
-🔴 Redis CLI
+📈 Load Testing
 
-Open the Redis shell:
+A dedicated "locust" directory exists in the project for load-testing resources.
 
-docker compose exec redis redis-cli
+This allows the application to be evaluated under simulated concurrent traffic.
 
-Test connectivity:
+Load testing can reveal:
 
-PING
+Latency
+Throughput
+Error Rate
+Concurrency Limits
+Database Bottlenecks
+Cache Effectiveness
+Resource Pressure
 
-Expected:
+Conceptually:
 
-PONG
-
----
-
-🏗️ Staging
-
-The repository provides a dedicated staging configuration:
-
-docker compose -f docker-compose-stage.yml up -d --build
-
-Inspect:
-
-docker compose -f docker-compose-stage.yml ps
-
-Follow backend logs:
-
-docker compose -f docker-compose-stage.yml logs -f backend
-
-Follow Nginx logs:
-
-docker compose -f docker-compose-stage.yml logs -f nginx
-
-The current staging definition starts Redis, Django/Gunicorn, and Nginx and uses named volumes for static/media assets.
-
----
-
-🔄 Staging Deployment Flow
-
-Recommended operational sequence:
-
-Pull Code
+Locust
    │
+   ├──── Request
+   ├──── Request
+   ├──── Request
+   ├──── Request
    ▼
-Build Images
-   │
-   ▼
-Start Services
-   │
-   ▼
-Django Check
-   │
-   ▼
-Migrations
-   │
-   ▼
-Collect Static
-   │
-   ▼
-Nginx Validation
-   │
-   ▼
-Application Smoke Test
-
-Commands:
-
-git pull
-
-docker compose -f docker-compose-stage.yml up -d --build
-
-docker compose -f docker-compose-stage.yml exec backend \
-python manage.py check
-
-docker compose -f docker-compose-stage.yml exec backend \
-python manage.py migrate
-
-docker compose -f docker-compose-stage.yml exec backend \
-python manage.py collectstatic --noinput
-
-docker compose -f docker-compose-stage.yml exec nginx nginx -t
+Django API
 
 ---
 
-🔍 Troubleshooting
+🤖 Continuous Integration
 
-Backend does not start
+The repository includes:
 
-Inspect logs:
+.github/workflows/docker-image.yml
 
-docker compose logs backend
+The current workflow runs for pushes and pull requests against "main".
 
-Or:
+Its pipeline executes:
 
-docker compose -f docker-compose-stage.yml logs backend
+Checkout
+   ↓
+Start Docker Compose
+   ↓
+Run Flake8
+   ↓
+Run Pytest
 
-Verify the Django project:
-
-docker compose exec backend python -c \
-"import core; print(core.__file__)"
-
-Verify WSGI:
-
-docker compose exec backend python -c \
-"import core.wsgi; print('WSGI OK')"
+The current workflow specifically runs both linting and tests inside the Docker backend container.
 
 ---
 
-❌ "ModuleNotFoundError: No module named 'core'"
+🔁 CI Pipeline
 
-Check the project structure:
-
-docker compose exec backend find /app -maxdepth 3 -name wsgi.py
-
-Check the working directory:
-
-docker compose exec backend pwd
-
-Check "/app":
-
-docker compose exec backend ls -la /app
-
-The container's working directory, volume mounts, and Gunicorn module path must match the actual repository structure.
-
----
-
-❌ Static Files Are Not Loading
-
-First verify Django's settings:
-
-docker compose exec backend python manage.py shell -c \
-"from django.conf import settings; print(settings.BASE_DIR); print(settings.STATIC_ROOT); print(settings.STATIC_URL)"
-
-Collect:
-
-docker compose exec backend python manage.py collectstatic --noinput
-
-Check backend:
-
-docker compose exec backend \
-find /app/core/static -type f | head -20
-
-Check Nginx:
-
-docker compose exec nginx \
-find /home/app/static -type f | head -20
-
-Then validate:
-
-docker compose exec nginx nginx -t
+                    GitHub
+                       │
+                       ▼
+                  Git Push / PR
+                       │
+                       ▼
+               GitHub Actions
+                       │
+              ┌────────┴────────┐
+              ▼                 ▼
+           Flake8             Pytest
+              │                 │
+              └────────┬────────┘
+                       ▼
+                    Result
 
 ---
 
-❌ "static_volume" Is Undefined
+🔐 Configuration
 
-Make sure the Compose file declares:
+The project uses "python-decouple".
 
-volumes:
-  static_volume:
-  media_volume:
-
-The current staging configuration includes both named volumes.
-
----
-
-🧠 Redis Connectivity Problems
-
-Inside Docker, use the Compose service name:
-
-redis:6379
-
-not:
-
-localhost:6379
-
-The project's Celery broker currently uses:
-
-redis://redis:6379/1
-
-and Django's cache uses:
-
-redis://redis:6379/2
-
----
-
-🔐 Configuration & Environment Variables
-
-The project uses "python-decouple" for configuration.
-
-For example:
+The current settings define configuration through environment-aware values such as:
 
 SECRET_KEY = config("SECRET_KEY", default="test")
+
 DEBUG = config("DEBUG", cast=bool, default=True)
+
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",
     cast=lambda v: [s.strip() for s in v.split(",")],
     default="*",
 )
 
-For real deployments, secrets should be stored outside source control.
-
-Recommended values include:
+For production:
 
 SECRET_KEY=<strong-secret>
 DEBUG=False
@@ -870,218 +797,422 @@ ALLOWED_HOSTS=example.com,www.example.com
 
 ---
 
-⚠️ Production Considerations
+🛡️ Production Security Notes
 
-The repository already contains deployment-oriented components such as Gunicorn, Nginx, Docker Compose, Redis, Celery, static/media volumes, and environment-based configuration.
+Before exposing the application publicly, review:
 
-However, a production deployment should still be hardened before public exposure.
+DEBUG
+SECRET_KEY
+ALLOWED_HOSTS
+CORS
+CSRF
+HTTPS
+Cookies
+Redis exposure
+Database exposure
+File permissions
+Secrets
 
-Important areas include:
-
-Security
-├── DEBUG=False
-├── strong SECRET_KEY
-├── restricted ALLOWED_HOSTS
-├── HTTPS
-├── secure cookies
-└── CSRF configuration
-
-Infrastructure
-├── database backups
-├── media backups
-├── log management
-├── monitoring
-└── health checks
-
-Networking
-├── avoid public Redis exposure
-├── restrict database access
-└── firewall unnecessary ports
+The current development-oriented configuration includes permissive defaults such as "ALLOWED_HOSTS="*"" and "CORS_ALLOW_ALL_ORIGINS=True"; these should be tightened for a real production deployment.
 
 ---
 
-📊 Operational Commands
+🧭 API Map
 
-Show containers:
+The current top-level URL architecture includes:
 
-docker ps
-
-Show all containers:
-
-docker ps -a
-
-Show images:
-
-docker images
-
-Show volumes:
-
-docker volume ls
-
-Show networks:
-
-docker network ls
-
-Show resource usage:
-
-docker stats
+Route| Purpose
+"/admin/"| Django Admin
+"/accounts/"| Account-related routes
+"/blog/"| Blog application
+"/api-auth/"| DRF authentication
+"/api-docs/"| DRF API documentation
+"/swagger/"| Swagger UI
+"/swagger/output.json"| OpenAPI schema
+"/redoc/"| ReDoc
+"/blog/api/v1/"| Versioned Blog API
 
 ---
 
-🧹 Stop the Environment
+🔬 Engineering Concepts Demonstrated
 
-docker compose down
+This repository is especially valuable as a practical study project because it touches several independent backend concepts.
 
-For staging:
-
-docker compose -f docker-compose-stage.yml down
-
-To remove volumes:
-
-docker compose -f docker-compose-stage.yml down -v
-
-«⚠️ Removing volumes can permanently remove stored data. Use "-v" only when you understand exactly what is stored inside those volumes.»
+                    Backend Engineering
+                            │
+       ┌────────────────────┼────────────────────┐
+       ▼                    ▼                    ▼
+   Application            API Layer          Infrastructure
+       │                    │                    │
+   Django Apps          DRF / JWT          Docker / Nginx
+       │                    │                    │
+       ▼                    ▼                    ▼
+   Domain Logic        Authentication       Gunicorn
+                            │                    │
+                            ▼                    ▼
+                        API Docs              Redis
+                                                 │
+                                                 ▼
+                                               Celery
 
 ---
 
-🗺️ Development Roadmap
+🧪 Quality Engineering
 
-The project already provides a strong advanced-Django foundation.
+The project treats quality as a separate engineering concern.
 
-Natural next steps include:
+                    Code
+                     │
+        ┌────────────┼────────────┐
+        ▼            ▼            ▼
+      Flake8       Black        Pytest
+        │            │            │
+        └────────────┼────────────┘
+                     ▼
+                   CI
 
-Infrastructure
+The current GitHub Actions workflow executes Flake8 and Pytest through Docker Compose.
 
-- [ ] Production-grade PostgreSQL configuration
-- [ ] HTTPS automation
+---
+
+⚡ Performance Engineering
+
+Performance is addressed through two complementary mechanisms:
+
+Redis
+
+Reduce expensive repeated work:
+
+Request
+   │
+   ▼
+Cache?
+ ┌─┴─┐
+Yes  No
+ │    │
+ ▼    ▼
+Data Database
+
+Locust
+
+Measure application behavior under load:
+
+Users
+  │
+  ▼
+Locust
+  │
+  ▼
+Django
+  │
+  ├── Redis
+  └── Database
+
+---
+
+🔄 Asynchronous Architecture
+
+Celery introduces a second processing path alongside regular HTTP requests.
+
+Synchronous
+
+Client
+  ↓
+Nginx
+  ↓
+Django
+  ↓
+Response
+
+Asynchronous
+
+Client
+  ↓
+Django
+  ↓
+Redis
+  ↓
+Celery Worker
+  ↓
+Background Task
+
+This separation allows expensive or delayed workloads to move outside the HTTP request lifecycle.
+
+---
+
+🧱 Development Philosophy
+
+The project is intentionally incremental.
+
+Every new technology solves a different engineering problem:
+
+Problem| Solution
+Web framework| Django
+API development| DRF
+Authentication| Session / Token / JWT
+User APIs| Djoser
+Filtering| django-filter
+API documentation| Swagger / ReDoc
+Caching| Redis
+Background jobs| Celery
+Scheduled jobs| Celery Beat
+Testing| Pytest
+Code quality| Flake8 / Black
+Performance testing| Locust
+Runtime isolation| Docker
+HTTP gateway| Nginx
+Application server| Gunicorn
+Automation| GitHub Actions
+
+---
+
+🚀 Quick Start
+
+Clone
+
+git clone https://github.com/amirkhodaei1/django_advance_blog.git
+cd django_advance_blog
+
+Start with Docker
+
+docker compose up -d --build
+
+Check containers
+
+docker compose ps
+
+Run migrations
+
+docker compose exec backend python manage.py migrate
+
+Collect static files
+
+docker compose exec backend python manage.py collectstatic --noinput
+
+Run tests
+
+docker compose exec backend pytest .
+
+Run linting
+
+docker compose exec backend flake8 .
+
+---
+
+🔍 Useful Debugging Commands
+
+Inspect Django paths
+
+docker compose exec backend \
+python manage.py shell -c \
+"from django.conf import settings; \
+print('BASE_DIR =', settings.BASE_DIR); \
+print('STATIC_ROOT =', settings.STATIC_ROOT); \
+print('STATIC_URL =', settings.STATIC_URL)"
+
+Verify WSGI
+
+docker compose exec backend \
+python -c "import core.wsgi; print('WSGI OK')"
+
+Inspect static files
+
+docker compose exec backend \
+find /app/core/static -type f | head -20
+
+Inspect Nginx static files
+
+docker compose exec nginx \
+find /home/app/static -type f | head -20
+
+Validate Nginx
+
+docker compose exec nginx nginx -t
+
+---
+
+🐞 Troubleshooting Philosophy
+
+When something fails, follow the request through the architecture.
+
+Browser
+  ↓
+Nginx
+  ↓
+Gunicorn
+  ↓
+Django
+  ↓
+Redis / Database
+
+For static files:
+
+Django collectstatic
+        ↓
+   static_volume
+        ↓
+      Nginx
+        ↓
+    /static/*
+
+For Celery:
+
+Django
+   ↓
+Redis
+   ↓
+Celery Worker
+
+This approach makes debugging systematic instead of trial-and-error.
+
+---
+
+📈 Roadmap
+
+The existing repository already contains a strong set of backend engineering components.
+
+Natural next stages include:
+
+Production Hardening
+
+- [ ] HTTPS
+- [ ] Secure production headers
+- [ ] Restrictive CORS
+- [ ] Strict "ALLOWED_HOSTS"
+- [ ] Secret management
 - [ ] Health checks
-- [ ] Reverse-proxy hardening
-- [ ] Structured logging
 
-Async Processing
+Data Layer
 
-- [ ] Dedicated Celery worker service
+- [ ] PostgreSQL production configuration
+- [ ] Automated database backups
+- [ ] Backup restoration testing
+
+Async Platform
+
+- [ ] Dedicated Celery Worker service
 - [ ] Dedicated Celery Beat service
 - [ ] Flower monitoring
-
-Quality
-
-- [ ] Expanded API test coverage
-- [ ] Integration tests
-- [ ] Coverage reporting
-- [ ] Security scanning
-
-CI/CD
-
-- [ ] Docker image publishing
-- [ ] Staging deployment automation
-- [ ] Production deployment pipeline
-- [ ] Automated rollback
 
 Observability
 
 - [ ] Sentry
 - [ ] Prometheus
 - [ ] Grafana
-- [ ] Centralized logs
+- [ ] Centralized logging
+
+Delivery
+
+- [ ] Docker image registry
+- [ ] Automated staging deployment
+- [ ] Production deployment
+- [ ] Rollback strategy
 
 Scaling
 
-- [ ] Multiple Gunicorn replicas
-- [ ] External/object storage for media
+- [ ] Multiple backend replicas
+- [ ] Load balancing
+- [ ] Object storage
 - [ ] Managed Redis
 - [ ] Managed PostgreSQL
-- [ ] Load balancing
 
 ---
 
-🧭 Engineering Philosophy
+🧠 The Learning Journey
 
-The architecture can be understood as a gradual evolution:
+The project can be read as a progression:
 
-Django Website
-      │
-      ▼
-Django + REST API
-      │
-      ▼
-Authentication
-      │
-      ▼
-Redis Caching
-      │
-      ▼
-Celery Background Tasks
-      │
-      ▼
-Testing + Linting
-      │
-      ▼
-Load Testing
-      │
-      ▼
-Docker
-      │
-      ▼
-Gunicorn + Nginx
-      │
-      ▼
-CI
-      │
-      ▼
-Production Platform
-
-The value of the project is not any single technology.
-
-It is the combination of these technologies into one coherent backend engineering workflow.
+                   DJANGO
+                     │
+                     ▼
+               Web Application
+                     │
+                     ▼
+                   REST
+                     │
+                     ▼
+              Authentication
+                     │
+                     ▼
+               API Design
+                     │
+                     ▼
+                  Redis
+                     │
+                     ▼
+                 Celery
+                     │
+                     ▼
+             Scheduled Tasks
+                     │
+                     ▼
+                  Testing
+                     │
+                     ▼
+              Load Testing
+                     │
+                     ▼
+                  Docker
+                     │
+                     ▼
+             Gunicorn + Nginx
+                     │
+                     ▼
+                    CI
+                     │
+                     ▼
+             Production Mindset
 
 ---
 
-📚 Learning Map
+🌟 Why This Project Matters
 
-This repository can be used as a practical study path:
+A blog is only the visible surface.
 
-01. Django Fundamentals
-        ↓
-02. Models and Applications
-        ↓
-03. Class-Based Views
-        ↓
-04. Authentication
-        ↓
-05. Django REST Framework
-        ↓
-06. JWT / Token APIs
-        ↓
-07. API Documentation
-        ↓
-08. Redis Caching
-        ↓
-09. Celery
-        ↓
-10. Periodic Tasks
-        ↓
-11. Testing
-        ↓
-12. Code Quality
-        ↓
-13. Load Testing
-        ↓
-14. Docker
-        ↓
-15. Gunicorn + Nginx
-        ↓
-16. CI
-        ↓
-17. Production Engineering
+The real value of this repository is the engineering journey underneath it.
+
+It demonstrates how a simple Django application can evolve into a system with:
+
+                    ┌─────────────────┐
+                    │   Web Layer     │
+                    └────────┬────────┘
+                             │
+                    ┌────────▼────────┐
+                    │    API Layer    │
+                    └────────┬────────┘
+                             │
+              ┌──────────────┼──────────────┐
+              ▼              ▼              ▼
+        Authentication     Cache       Background Jobs
+              │              │              │
+              ▼              ▼              ▼
+             JWT           Redis          Celery
+              │                             │
+              └─────────────┬───────────────┘
+                            ▼
+                       Django Core
+                            │
+              ┌─────────────┼─────────────┐
+              ▼             ▼             ▼
+           Testing       Load Test     Deployment
+              │             │             │
+           Pytest         Locust      Docker/Nginx
+              │                             │
+              └─────────────┬───────────────┘
+                            ▼
+                           CI
+
+That is what makes "django_advance_blog" more than a CRUD tutorial.
+
+It is a practical environment for learning how backend systems are actually assembled.
 
 ---
 
 🤝 Contributing
 
-Contributions, improvements, bug fixes, documentation updates, and test improvements are welcome.
+Contributions, bug fixes, test improvements, documentation updates, refactoring, and infrastructure improvements are welcome.
 
-Before opening a pull request:
+Before submitting a change:
 
 pytest .
 
@@ -1089,19 +1220,13 @@ flake8 .
 
 black .
 
-and verify that the Docker environment can start successfully.
+and verify that the Docker environment starts successfully.
 
 ---
 
 📜 License
 
-This project is released under the MIT License.
-
-See:
-
-LICENSE
-
-for the complete license text.
+See the repository's ""LICENSE"" (LICENSE) file for the project's licensing terms.
 
 ---
 
@@ -1119,84 +1244,42 @@ https://github.com/amirkhodaei1/django_advance_blog
 
 ---
 
-⭐ Project Status
+⭐ Final Snapshot
 
-This repository is an evolving advanced Django project.
-
-It currently combines:
-
-Django
-├── Blog
-├── Custom User Model
-├── REST API
-├── Authentication
-├── JWT
-├── API Documentation
-├── Redis Cache
-├── Celery
-├── Celery Beat
-├── Pytest
-├── Flake8
-├── Black
-├── Locust
-├── Docker
-├── Gunicorn
-├── Nginx
-└── GitHub Actions
-
-The project is structured as a practical backend engineering environment rather than a minimal demo application.
-
----
-
-🚀 Why This Repository?
-
-A typical Django tutorial may stop at:
-
-Model → View → Template
-
-This project goes further:
-
-                         ┌──────────────┐
-                         │    Django    │
-                         └──────┬───────┘
-                                │
-              ┌─────────────────┼─────────────────┐
-              │                 │                 │
-              ▼                 ▼                 ▼
-          REST API         Authentication       Templates
-              │                 │
-              ▼                 ▼
-             JWT              Djoser
-              │
-              └────────────┬────────────┘
+                    DJANGO ADVANCE BLOG
+                           │
+         ┌─────────────────┼─────────────────┐
+         │                 │                 │
+         ▼                 ▼                 ▼
+     APPLICATION          API             INFRASTRUCTURE
+         │                 │                 │
+      Django              DRF             Docker
+      Blog              JWT / Token       Nginx
+      Accounts          Djoser            Gunicorn
+         │            Swagger/Redoc       Redis
+         │                 │                 │
+         └─────────────────┼─────────────────┘
+                           │
+                ┌──────────┴──────────┐
+                ▼                     ▼
+             QUALITY              ASYNC
+                │                     │
+             Pytest               Celery
+             Flake8             Celery Beat
+             Black                  Redis
+             Locust
+                │                     │
+                └──────────┬──────────┘
                            ▼
-                         Redis
-                      ┌────┴────┐
-                      ▼         ▼
-                   Cache      Celery
-                                │
-                                ▼
-                           Celery Beat
+                     GitHub Actions
+                           │
+                           ▼
+                Continuous Improvement
 
-Docker
-  │
-  ├── Backend
-  ├── Redis
-  └── Nginx
-
-Quality
-  ├── Pytest
-  ├── Flake8
-  └── Black
-
-Performance
-  └── Locust
-
-Automation
-  └── GitHub Actions
-
-The result is a project that demonstrates not only how to write a Django application, but also how the application fits into a broader backend engineering and deployment ecosystem.
-
----
-
-Built with Django. Tested with Pytest. Accelerated by Redis. Powered by Celery. Containerized with Docker. Served by Gunicorn and Nginx. Automated with GitHub Actions.
+<p align="center">
+  <strong>Built to learn Django.</strong><br>
+  <strong>Structured to understand backend engineering.</strong><br>
+  <strong>Designed to evolve toward production.</strong>
+</p><p align="center">
+  ⭐ <strong>django_advance_blog</strong> ⭐
+</p>
