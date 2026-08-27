@@ -68,7 +68,7 @@ The infrastructure employs a decoupled, multi-layered design. Inbound traffic is
 │  Celery Worker   │   │    Celery Beat    │
 │ Async Processing │   │ Periodic Schedule │
 └──────────────────┘   └───────────────────┘
-
+```
 ✨ Feature Matrix
 | Architectural Layer | Capabilities & Standards | Tech Stack |
 |---|---|---|
