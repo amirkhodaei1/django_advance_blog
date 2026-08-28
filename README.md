@@ -204,6 +204,4 @@ Amir Khodaei
  * Repository: django_advance_blog
 📜 License
 Distributed under the MIT License. See LICENSE for full details.
-<p align="center">
-⭐ <strong>If you find this repository helpful, please consider giving it a star!</strong> ⭐
-</p>
+
